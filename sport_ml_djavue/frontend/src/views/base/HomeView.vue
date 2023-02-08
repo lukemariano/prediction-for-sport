@@ -11,19 +11,28 @@
         <v-btn @click="clear"> clear fields</v-btn>
       </form>
     </v-card>
+    <div v-show="isMakePredict">
+      {{ isMakePredict != null ? this.appStore.showSnackbar(`Novo predict gerado !`) : "" }}
+    </div>
   </div>
 </template>
 
 <script>
 import api from "@/api/predict.api"
+import { useAppStore } from "@/stores/appStore"
 
 export default {
+  setup() {
+    const appStore = useAppStore()
+    return { appStore }
+  },
   data: () => ({
     name: null,
     age: null,
     height: null,
     sexSelected: null,
     sex: ["Male", "Woman"],
+    isMakePredict: null,
   }),
   methods: {
     async submit() {
@@ -34,6 +43,7 @@ export default {
         sex: this.sexSelected,
       }
       const req = await api.makePredict(model_inputs)
+      this.isMakePredict = true
     },
     clear() {
       this.name = ""
