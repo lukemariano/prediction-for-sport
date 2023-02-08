@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Jorge Oliva",
+    "age": 18,
+    "height": 1.75,
+    "sex": "Male",
+    "predict": "['Soccer']"
+  },
+  {
+    "name": "Luke Mariano",
+    "age": 21,
+    "height": 1.84,
+    "sex": "Male",
+    "predict": "['Hockey']"
+  }
+]

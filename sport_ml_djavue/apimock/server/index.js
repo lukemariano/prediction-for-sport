@@ -5,7 +5,7 @@ const multer = require("multer");
 const cookieParser = require("cookie-parser");
 
 const base = require("./controllers/base");
-
+const predicts = require("./controllers/predicts");
 
 const YELLOW = "\x1b[33m%s\x1b[0m";
 const WHITE = "\x1b[37m";
@@ -26,6 +26,7 @@ app.use(cors({ credentials: true, origin: ORIGIN_URL }));
 // BASE
 app.get("dapau", base.dapau);
 
+app.get("/api/predicts", predicts.find);
 
 app.listen(PORT, () => {
   console.log(
