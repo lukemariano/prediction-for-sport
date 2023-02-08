@@ -54,8 +54,7 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "sport_ml_djavue.base",
-    "sport_ml_djavue.accounts",
-    "sport_ml_djavue.tasks",
+    "sport_ml_djavue.sport_predicts",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
