@@ -1,0 +1,12 @@
+__pycache__
+dkdata
+*.pyc
+.coverage
+coverage.xml
+htmlcov/
+.idea
+/sport_ml_djavue.log
+/static
+.venv/
+/apimock/node_modules
+.vscode/
