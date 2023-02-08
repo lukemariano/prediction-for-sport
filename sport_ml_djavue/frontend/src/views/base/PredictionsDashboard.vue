@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { api } from "@/api/predict.api"
+import api from "@/api/predict.api"
 
 export default {
   data() {

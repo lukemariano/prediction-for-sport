@@ -27,6 +27,7 @@ app.use(cors({ credentials: true, origin: ORIGIN_URL }));
 app.get("dapau", base.dapau);
 
 app.get("/api/predicts/list", predicts.find);
+app.post("/api/predicts/add", predicts.add);
 
 app.listen(PORT, () => {
   console.log(

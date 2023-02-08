@@ -6,8 +6,8 @@
         <v-text-field v-model="name" label="Name" required></v-text-field>
         <v-text-field v-model="age" label="Age" type="number" required></v-text-field>
         <v-text-field v-model="height" label="Height" type="number" required></v-text-field>
-        <v-select :items="items" label="Sex" dense required></v-select>
-        <v-btn class="mr-4" type="submit" :disabled="invalid"> Make prediction </v-btn>
+        <v-select :items="sex" label="Sex" v-model="sexSelected" dense></v-select>
+        <v-btn class="mr-4" type="submit"> Make prediction </v-btn>
         <v-btn @click="clear"> clear fields</v-btn>
       </form>
     </v-card>
@@ -15,19 +15,31 @@
 </template>
 
 <script>
+import api from "@/api/predict.api"
+
 export default {
   data: () => ({
-    name: "",
+    name: null,
     age: null,
     height: null,
+    sexSelected: null,
+    sex: ["Male", "Woman"],
   }),
   methods: {
-    submit() {
-      console.log("enviei", this.name)
+    async submit() {
+      const model_inputs = {
+        name: this.name,
+        age: this.age,
+        height: this.height,
+        sex: this.sexSelected,
+      }
+      const req = await api.makePredict(model_inputs)
     },
     clear() {
       this.name = ""
       this.age = null
+      this.height = null
+      this.sexSelected = null
     },
   },
 }
