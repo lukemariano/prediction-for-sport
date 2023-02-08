@@ -5,7 +5,11 @@
       <form @submit.prevent="submit">
         <v-text-field v-model="name" label="Name" required></v-text-field>
         <v-text-field v-model="age" label="Age" type="number" required></v-text-field>
-        <v-text-field v-model="height" label="Height" type="number" required></v-text-field>
+        <v-text-field
+          v-model="height"
+          label="Height (in centimeters)"
+          height
+          required></v-text-field>
         <v-select :items="sex" label="Sex" v-model="sexSelected" dense></v-select>
         <v-btn class="mr-4" type="submit"> Make prediction </v-btn>
         <v-btn @click="clear"> clear fields</v-btn>
@@ -39,7 +43,7 @@ export default {
       const model_inputs = {
         name: this.name,
         age: this.age,
-        height: this.height,
+        height: this.height / 100,
         sex: this.sexSelected,
       }
       const req = await api.makePredict(model_inputs)

@@ -7,7 +7,7 @@
       <VMain>
         <RouterView />
       </VMain>
-      <app-footer :fixed="true" :user="loggedUser" />
+      <app-footer :fixed="true" />
     </VApp>
   </VLayout>
 </template>
@@ -25,7 +25,6 @@ function onThemeClick() {
 <script>
 import { mapState } from "pinia"
 import { useAppStore } from "@/stores/appStore"
-import { useAccountsStore } from "@/stores/accountsStore"
 import AppSnackbar from "@/components/AppSnackbar.vue"
 import AppErrorDialog from "@/components/AppErrorDialog.vue"
 import AppNavBar from "@/components/AppNavBar.vue"
@@ -45,7 +44,6 @@ export default {
   },
   computed: {
     ...mapState(useAppStore, ["errorMessage", "showErrorMessage"]),
-    ...mapState(useAccountsStore, ["loggedUser"]),
   },
   methods: {
     closeErrorDialog() {
