@@ -1,12 +1,11 @@
 import joblib
-from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from sklearn.tree import DecisionTreeClassifier
 
 
 class Data(models.Model):
     name = models.CharField(max_length=100, blank=False)
-    age = models.PositiveIntegerField(validators=[MinValueValidator(5), MaxValueValidator(80)] ,blank=False)
+    age = models.PositiveIntegerField(blank=False)
     height = models.DecimalField(max_digits=3, decimal_places=2, blank=False)
     sex = models.IntegerField(blank=False)
     predictions = models.CharField(max_length=30, blank=True)
