@@ -1,21 +1,19 @@
 # coding: utf-8
-import json
-
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
 from ..commons.django_views_utils import ajax_login_required
-from .service import todo_svc
+from .service import predict_svc
 
 
 @csrf_exempt
 @ajax_login_required
-def add_todo(request):
-    predict = todo_svc.add_todo(request.POST)
+def add_predict(request):
+    predict = predict_svc.add_predict(request.POST)
     return JsonResponse(predict)
 
 
 @ajax_login_required
-def list_todos(request):
-    predicts = todo_svc.list_todos()
+def list_predicts(request):
+    predicts = predict_svc.list_predicts()
     return JsonResponse({"predicts": predicts})
