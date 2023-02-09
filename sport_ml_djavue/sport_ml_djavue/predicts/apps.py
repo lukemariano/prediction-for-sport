@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class SportPredictsConfig(AppConfig):
+class PredictsConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
-    name = "sport_ml_djavue.sport_predicts"
+    name = "sport_ml_djavue.predicts"

@@ -20,5 +20,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     # path('explorer/', include('explorer.urls')),
     path("api/", include("sport_ml_djavue.base.urls")),
-    path("api/predicts/", include("sport_ml_djavue.sport_predicts.urls")),
+    path("api/predicts/", include("sport_ml_djavue.predicts.urls")),
 ]

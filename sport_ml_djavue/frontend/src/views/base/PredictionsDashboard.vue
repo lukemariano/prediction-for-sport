@@ -15,7 +15,7 @@
         <tr v-for="input in item.predicts" :key="input.name">
           <td>{{ input.name }}</td>
           <td>{{ input.age }}</td>
-          <td>{{ input.height / 100 }}</td>
+          <td>{{ input.height }}</td>
           <td>{{ input.sex == 0 ? "Female" : "Male" }}</td>
           <td>{{ input.predictions }}</td>
         </tr>
