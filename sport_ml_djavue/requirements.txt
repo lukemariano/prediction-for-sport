@@ -4,6 +4,10 @@ asgiref==3.5.2
 sqlparse==0.4.2
 tzdata==2022.1
 
+# Model
+joblib==1.2.0
+scikit-learn==1.2.1
+
 # 3rd
 django-sql-explorer==2.4.2
 

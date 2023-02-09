@@ -6,13 +6,12 @@ def add_predict(new_predict):
         name=new_predict['name'],
         age=new_predict['age'],
         height=float(new_predict['height']),
-        sex=new_predict['sex'],
-        predictions="['hockey']"
+        sex=new_predict['sex']
         )
     predict.save()
-    return predict.to_dict_json()
+    return predict.to_dict_json_add()
 
 
 def list_predicts():
     predicts = Data.objects.all()
-    return [predict.to_dict_json() for predict in predicts]
+    return [predict.to_dict_json_list() for predict in predicts]
