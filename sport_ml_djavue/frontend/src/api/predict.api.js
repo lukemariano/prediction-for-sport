@@ -8,7 +8,6 @@ export default {
   },
 
   async makePredict(inputs) {
-    console.log(inputs)
     const response = await api.post(`/api/predicts/add`, apiHelpers.dataToForm(inputs))
     console.log(response.data)
     return await response.data

@@ -1,12 +1,18 @@
-from ..models import Todo
+from ..models import Data
 
 
-def add_todo(new_task):
-    todo = Todo(description=new_task)
-    todo.save()
-    return todo.to_dict_json()
+def add_todo(new_predict):
+    predict = Data(
+        name=new_predict['name'],
+        age=new_predict['age'],
+        height=float(new_predict['height']),
+        sex=new_predict['sex'],
+        predictions="['hockey']"
+        )
+    predict.save()
+    return predict.to_dict_json()
 
 
 def list_todos():
-    todos = Todo.objects.all()
-    return [todo.to_dict_json() for todo in todos]
+    predicts = Data.objects.all()
+    return [predict.to_dict_json() for predict in predicts]

@@ -44,9 +44,10 @@ export default {
         name: this.name,
         age: this.age,
         height: this.height / 100,
-        sex: this.sexSelected,
+        sex: this.sexSelected == "Woman" ? 0 : 1,
       }
       const req = await api.makePredict(model_inputs)
+      console.log(req)
       this.isMakePredict = true
     },
     clear() {

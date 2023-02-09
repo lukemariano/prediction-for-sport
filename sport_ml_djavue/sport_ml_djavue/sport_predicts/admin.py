@@ -1,10 +1,10 @@
 from django.contrib import admin
 
-from .models import Todo
+from .models import Data
 
 
-class TodoAdmin(admin.ModelAdmin):
-    list_display = ('description', 'done')
+class DataAdmin(admin.ModelAdmin):
+    list_display = ('name', 'age', 'height', 'sex', 'predictions', 'date')
 
 
-admin.site.register(Todo, TodoAdmin)
+admin.site.register(Data, DataAdmin)

@@ -11,11 +11,11 @@ from .service import todo_svc
 @csrf_exempt
 @ajax_login_required
 def add_todo(request):
-    todo = todo_svc.add_todo(request.POST["description"])
-    return JsonResponse(todo)
+    predict = todo_svc.add_todo(request.POST)
+    return JsonResponse(predict)
 
 
 @ajax_login_required
 def list_todos(request):
-    todos = todo_svc.list_todos()
-    return JsonResponse({"todos": todos})
+    predicts = todo_svc.list_todos()
+    return JsonResponse({"predicts": predicts})
