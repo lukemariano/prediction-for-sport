@@ -1,18 +1,35 @@
-# from sport_ml_djavue.tasks.models import Todo
+import pytest
+from django.contrib.auth.models import User
+
+from sport_ml_djavue.predicts.models import Data
 
 
-def test_criar_tarefa_sem_login(client):
-    resp = client.post("/api/tasks/add", {"new_task": "walk the dog"})
-    assert resp.status_code == 401
+@pytest.mark.django_db
+def test_cria_um_usuario():
+    user = User.objects.create_user(
+        username='testuser',
+        password='testpassword'
+    )
+    assert user.id is not None
 
 
-# def test_criar_tarefa_com_login(client, db):
-#     fixtures.user_jon()
-#     Todo.objects.create(description="walk the dog")
+@pytest.mark.django_db
+def test_data_save():
+    data = Data(name='John', age=20, height=1.80, sex=1)
+    data.save()
 
-#     client.force_login(User.objects.get(username="jon"))
-#     resp = client.get("/api/tasks/list")
-#     data = resp.json()
+    assert data.predictions == ['Soccer'], (
+        print(f"The output is {data.predictions}")
+        )
 
-#     assert resp.status_code == 200
-#     assert data == {"todos": [{"description": "walk the dog", "done": False, "id": 1}]}
+
+def test_api_list(client, db):
+    user = User.objects.create_user(
+        username='testuser',
+        password='testpassword'
+    )
+
+    client.login(username='testuser', password='testpassword')
+
+    resp = client.get('/api/predicts/list')
+    assert resp.status_code == 200
