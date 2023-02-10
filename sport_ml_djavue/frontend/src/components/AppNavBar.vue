@@ -1,6 +1,10 @@
 <template>
   <nav id="nav">
-    <v-btn icon id="github"><v-icon>mdi-github</v-icon></v-btn>
+    <div id="github" class="font-weight-bold">
+      <v-btn icon href="https://github.com/lukemariano/" target="_blank"
+        ><v-icon>mdi-github</v-icon></v-btn
+      >By: Lucas Mariano
+    </div>
     <router-link to="/">Home</router-link>
     <router-link to="/predictions">Predictions</router-link>
   </nav>
