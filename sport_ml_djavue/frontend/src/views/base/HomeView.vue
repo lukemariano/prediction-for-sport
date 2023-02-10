@@ -70,6 +70,9 @@ export default {
       this.age = null
       this.height = null
       this.sexSelected = null
+
+      // redirect
+      this.$router.push({ name: "base-predictions" })
     },
     clear() {
       this.$refs.form.resetValidation()
