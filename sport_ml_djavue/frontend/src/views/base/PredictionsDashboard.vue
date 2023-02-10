@@ -42,6 +42,6 @@ export default {
 
 <style scoped>
 .text--color {
-  color: black;
+  color: black !important;
 }
 </style>

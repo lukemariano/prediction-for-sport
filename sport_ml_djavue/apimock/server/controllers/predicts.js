@@ -7,9 +7,10 @@ module.exports = {
   },
 
   add: (req, res) => {
+    console.log(req.body);
     const newPredict = req.body;
     console.log(req);
-    data.predicts.push(newPredict);
+    data.predicts.predicts.push(newPredict);
     res.send(newPredict);
   },
 };
