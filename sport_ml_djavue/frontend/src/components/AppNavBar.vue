@@ -5,7 +5,7 @@
         ><v-icon>mdi-github</v-icon></v-btn
       >By: Lucas Mariano
     </div>
-    <router-link to="/">Home</router-link>
+    <router-link to="/home">Home</router-link>
     <router-link to="/predictions">Predictions</router-link>
   </nav>
 </template>

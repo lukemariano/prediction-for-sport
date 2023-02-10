@@ -33,3 +33,5 @@ def test_api_list(client, db):
 
     resp = client.get('/api/predicts/list')
     assert resp.status_code == 200
+
+
