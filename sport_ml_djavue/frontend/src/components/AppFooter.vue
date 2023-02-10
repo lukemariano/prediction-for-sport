@@ -1,5 +1,5 @@
 <template>
-  <v-footer :absolute="!fixed" app>
+  <v-footer :absolute="!fixed" class="mt-6" app>
     <v-container>
       <v-row justify="center">
         <v-col cols="12" lg="6" md="6" align-self="center" class="pa-0">

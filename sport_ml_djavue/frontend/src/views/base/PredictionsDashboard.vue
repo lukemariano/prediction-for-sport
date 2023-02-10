@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1 class="text-center mb-6 mt-6 text-h3 font-weight-bold">Generated Predictions🔮</h1>
-    <v-table>
+    <v-table class="mb-6">
       <thead>
         <tr style="background-color: #fdc200">
           <th class="text-left text-h5 text--color font-weight-bold">Name</th>

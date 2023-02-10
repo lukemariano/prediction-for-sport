@@ -16,13 +16,13 @@
           label="Height (in centimeters)"
           height
           required></v-text-field>
-        <v-select :items="sex" label="Sex" v-model="sexSelected" dense></v-select>
+        <v-select :items="sex" label="Sex" v-model="sexSelected" dense :rules="sexRules"></v-select>
         <v-btn :disabled="!valid" class="mr-4" @click="validate"> Make prediction </v-btn>
         <v-btn @click="clear"> clear fields</v-btn>
       </v-form>
     </v-card>
     <div v-show="isMakePredict">
-      {{ isMakePredict != null ? this.appStore.showSnackbar(`Novo predict gerado !`) : "" }}
+      {{ isMakePredict != null ? this.appStore.showSnackbar(`New forecast generated! !`) : "" }}
     </div>
   </div>
 </template>
@@ -41,7 +41,7 @@ export default {
     age: null,
     height: null,
     sexSelected: null,
-    sex: ["Male", "Woman"],
+    sex: ["Male", "Female"],
     isMakePredict: null,
     valid: true,
     ageRules: [(v) => (v >= 5 && v <= 130) || "Age must be greater than or equal to 5"],
@@ -49,6 +49,7 @@ export default {
       (v) =>
         (v <= 300 && v >= 102) || "The minimum height is 102 cm and the maximum height is 300 cm",
     ],
+    sexRules: [(v) => !!v || "Please select your gender"],
   }),
   methods: {
     async validate() {
