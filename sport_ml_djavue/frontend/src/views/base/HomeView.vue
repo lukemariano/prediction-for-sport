@@ -1,5 +1,8 @@
 <template>
   <div>
+    <div style="text-align: right">
+      <v-btn @click="logout"><v-icon>mdi-logout</v-icon> Logout</v-btn>
+    </div>
     <h1 class="mx-auto my-12 text-center" max-width="500">Predict Inputs</h1>
     <v-card class="mx-auto my-12" max-width="500" elevation="2" shaped>
       <v-form lazy-validation ref="form" v-model="valid">
@@ -30,13 +33,17 @@
 <script>
 import api from "@/api/predict.api"
 import { useAppStore } from "@/stores/appStore"
+import AccountsApi from "@/api/accounts.api.js"
+import { useAccountsStore } from "@/stores/accountsStore"
 
 export default {
   setup() {
     const appStore = useAppStore()
-    return { appStore }
+    const accountsStore = useAccountsStore()
+    return { appStore, accountsStore }
   },
   data: () => ({
+    loading: false,
     name: null,
     age: null,
     height: null,
@@ -81,6 +88,19 @@ export default {
       this.age = null
       this.height = null
       this.sexSelected = null
+    },
+
+    logout() {
+      this.loading = true
+      AccountsApi.logout()
+        .then(() => {
+          this.accountsStore.clearLoggedUser()
+          this.appStore.showSnackbar("Sessão encerrada!", "warning")
+          this.$router.push({ name: "base-login" })
+        })
+        .finally(() => {
+          this.loading = false
+        })
     },
   },
 }

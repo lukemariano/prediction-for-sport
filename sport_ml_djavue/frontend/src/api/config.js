@@ -25,7 +25,7 @@ export function responseError(error) {
   if (error.response && error.response.status === 401) {
     appStore.showSnackbar("Usuário sem autênticação. Efetue o login!", "warning")
     router.push({
-      name: "accounts-login",
+      name: "base-login",
     })
     return
   }

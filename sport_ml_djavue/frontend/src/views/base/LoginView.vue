@@ -31,20 +31,12 @@
             Login
           </v-btn>
           <v-btn
-            class="my-2"
             block
+            variant="outlined"
+            class="mt-2"
             size="large"
             rounded="pill"
             style="background-color: rgb(255 196 0 / 0%); color: white"
-            variant="outlined"
-            :to="{ name: 'base-home' }">
-            Home
-          </v-btn>
-          <v-btn
-            block
-            size="large"
-            rounded="pill"
-            style="background-color: #fdc200; color: black"
             append-icon="mdi-chevron-right"
             @click="register">
             Register
@@ -86,7 +78,7 @@ export default {
       if (response.authenticated) {
         this.saveLoggedUser(response.user)
         this.appStore.showSnackbar("Usuário já logado", "warning")
-        this.showTasks()
+        this.showPredicts()
       }
     })
   },
@@ -100,7 +92,7 @@ export default {
             return
           }
           this.saveLoggedUser(response.user)
-          this.showTasks()
+          this.showPredicts()
         })
         .finally(() => {
           this.loading = false
@@ -114,9 +106,9 @@ export default {
         console.log("logged")
       }
     },
-    showTasks() {
+    showPredicts() {
       this.$router.push({ name: "base-home" })
-      console.log("--> tasks")
+      console.log("--> predicts")
     },
 
     register() {

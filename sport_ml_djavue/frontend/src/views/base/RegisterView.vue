@@ -44,8 +44,8 @@
             rounded="pill"
             style="background-color: rgb(255 196 0 / 0%); color: white"
             variant="outlined"
-            :to="{ name: 'base-home' }">
-            Home
+            :to="{ name: 'base-login' }">
+            Back to Login
           </v-btn>
         </v-form>
       </v-col>

@@ -3,6 +3,7 @@ import EmptyLayout from "@/layouts/default/EmptyLayout.vue"
 import HomeView from "@/views/base/HomeView.vue"
 import LoginView from "@/views/base/LoginView.vue"
 import RegisterView from "@/views/base/RegisterView.vue"
+import LogoutView from "@/views/base/LoginView.vue"
 
 export default [
   {
@@ -23,6 +24,11 @@ export default [
         path: "/register",
         name: "base-register",
         component: RegisterView,
+      },
+      {
+        path: "/logout",
+        name: "base-logout",
+        component: LogoutView,
       },
     ],
   },

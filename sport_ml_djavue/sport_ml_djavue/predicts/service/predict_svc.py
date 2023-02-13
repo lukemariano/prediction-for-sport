@@ -1,8 +1,9 @@
 from ..models import Data
 
 
-def add_predict(new_predict):
+def add_predict(new_predict, request):
     predict = Data(
+        user=request.user,
         name=new_predict['name'],
         age=new_predict['age'],
         height=float(new_predict['height']),
@@ -12,6 +13,6 @@ def add_predict(new_predict):
     return predict.to_dict_json_add()
 
 
-def list_predicts():
-    predicts = Data.objects.all()
+def list_predicts(request):
+    predicts = Data.objects.filter(user=request.user)
     return [predict.to_dict_json_list() for predict in predicts]

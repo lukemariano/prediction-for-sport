@@ -58,14 +58,14 @@ def register(request):
 
 @ajax_login_required
 def list_predicts(request):
-    predicts = predict_svc.list_predicts()
+    predicts = predict_svc.list_predicts(request)
     return JsonResponse({"predicts": predicts})
 
 
 @csrf_exempt
 @ajax_login_required
 def add_predict(request):
-    predict = predict_svc.add_predict(request.POST)
+    predict = predict_svc.add_predict(request.POST, request)
     return JsonResponse(predict)
 
 
