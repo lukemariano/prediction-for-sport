@@ -43,7 +43,7 @@ O intuito desse projeto é receber inputs de um usuário e prever qual esporte s
 1º Passo: entre na pasta raiz do projeto
 
 ```
-$ cd sport_ml_djavue
+$ cd sport_ml_djavue/
 ```
 
 2º Passo: crie e inicie os containers
@@ -51,9 +51,13 @@ $ cd sport_ml_djavue
 ```
 # Para criar os containers
 $ docker compose build
+ou
+$ docker-compose build
 
 # Para iniciar os containers
-$ docker compose -d backend frontend
+$ docker compose up backend frontend -d
+ou
+$ docker-compose up backend frontend -d
 ```
 
 3º Passo: Acesse "localhost" no navegador e Pronto, o projeto ja estara rodando localmente!
