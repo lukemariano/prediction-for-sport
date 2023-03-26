@@ -12,4 +12,9 @@ export default {
     console.log(response.data)
     return await response.data
   },
+
+  async deletePredict(predict) {
+    const response = await api.delete(`/api/predicts/delete`, { data: predict })
+    return await response.data
+  },
 }
