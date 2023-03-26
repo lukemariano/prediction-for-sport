@@ -1,11 +1,14 @@
-# coding: utf-8
+import json
+
 from django.contrib import auth
 from django.contrib.auth.models import User
 from django.http import JsonResponse
 from django.shortcuts import redirect
 from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_http_methods
 
 from ..commons.django_views_utils import ajax_login_required
+from .models import Data
 from .service import log_svc, predict_svc
 
 
@@ -69,3 +72,25 @@ def add_predict(request):
     return JsonResponse(predict)
 
 
+@require_http_methods(["DELETE"])
+def delete_prediction(request):
+    # Recebe os dados da predição na requisição DELETE
+    data = request.body.decode("utf-8")
+    data_dict = json.loads(data)
+    name = data_dict.get("name")
+    age = data_dict.get("age")
+    height = data_dict.get("height")
+    sex = data_dict.get("sex")
+    predictions = data_dict.get("predictions")
+
+    # Pesquisa o banco de dados com base nos dados da predição
+    prediction = Data.objects.filter(
+        name=name, age=age, height=height, sex=sex, predictions=predictions
+    ).first()
+
+    # Exclui a predição, se encontrada
+    if prediction:
+        prediction.delete()
+        return JsonResponse({"message": "Prediction deleted successfully."}, status=200)
+    else:
+        return JsonResponse({"error": "Prediction not found."}, status=404)

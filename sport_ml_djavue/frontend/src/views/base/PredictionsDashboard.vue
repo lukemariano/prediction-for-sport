@@ -9,6 +9,7 @@
           <th class="text-left text-h5 text--color font-weight-bold">Height</th>
           <th class="text-left text-h5 text--color font-weight-bold">Sex</th>
           <th class="text-left text-h5 text--color font-weight-bold">Predict</th>
+          <th class="text-left text-h5 text--color font-weight-bold">Delete Predict</th>
         </tr>
       </thead>
       <tbody>
@@ -18,6 +19,16 @@
           <td class="text-h6">{{ input.height }}</td>
           <td class="text-h6">{{ input.sex == 0 ? "Female" : "Male" }}</td>
           <td class="text-h6">{{ input.predictions }}</td>
+          <td class="text-h6">
+            <v-btn
+              block
+              rounded="pill"
+              style="background-color: #fdc200; color: black"
+              append-icon="mdi-delete"
+              @click="deletePredict(input)"
+              >Delete</v-btn
+            >
+          </td>
         </tr>
       </tbody>
     </v-table>
@@ -32,6 +43,27 @@ export default {
     return {
       item: [],
     }
+  },
+
+  methods: {
+    async deletePredict(predict) {
+      try {
+        const response = await api.deletePredict(predict)
+        console.log(response) // imprime a resposta da API no console
+        // Atualiza os dados na tabela após a exclusão
+        const index = this.item.predicts.findIndex(
+          (p) =>
+            p.name === predict.name &&
+            p.age === predict.age &&
+            p.height === predict.height &&
+            p.sex === predict.sex &&
+            p.predictions === predict.predictions
+        )
+        this.item.predicts.splice(index, 1)
+      } catch (error) {
+        console.log(error) // imprime o erro no console
+      }
+    },
   },
 
   async mounted() {
